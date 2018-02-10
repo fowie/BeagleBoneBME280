@@ -1,4 +1,4 @@
-from Adafruit_I2C import Adafruit_I2C
+import Adafruit_GPIO.I2C as I2C
 import time
 import array
 from struct import *
@@ -120,7 +120,7 @@ class BME280:
 	
 	def __init__(self, address):
 		#Setup the I2C component
-		self.i2c = Adafruit_I2C(address=0x76)
+		self.i2c = I2C.Device(0x76, 2)
 		#Verify the ID
 		if(self.ID() != 0x60):
 			print "ERROR!  Got an invalid ID: "+hex(self.ID())
